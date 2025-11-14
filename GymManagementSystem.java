@@ -10,4 +10,32 @@ public class GymManagementSystem {
     private final String MEMBER_FILE = "C:\\Java\\GymmanagementSystem\\data\\member.txt";
     private final String PAYMENT_FILE = "C:\\Java\\GymmanagementSystem\\data\\payments.txt";
 
+     Scanner sc = new Scanner(System.in);
+
+    public GymManagementSystem() {
+        loadMembers();
+        loadPayments();
+    }
+public void addMember() {
+        try {
+            System.out.print("Enter Member ID: ");
+            String id = sc.next();
+            System.out.print("Enter Name: ");
+            String name = sc.next();
+            System.out.print("Enter Age: ");
+            int age = sc.nextInt();
+            System.out.print("Enter Membership Type: ");
+            String type = sc.next();
+
+            Member m = new Member(id, name, age, type);
+            members.add(m);
+            saveMembers();
+            System.out.println("Member added successfully!");
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input! Please enter correct values.");
+            sc.nextLine();
+        }
+    }
+
+
 }
